@@ -15,8 +15,11 @@ FROM rental;
 
 # 2.2 Retrieve rental information and add two additional columns to show the month
 # and weekday of the rental. Return 20 rows of results.
-SELECT DATEDIFF(MAX(rental_date), MIN(rental_date))
-FROM rental;
+SELECT rental_id, customer_id, rental_date, 
+       MONTH(rental_date) AS rental_month, 
+       DAYNAME(rental_date) AS rental_weekday
+FROM rental
+LIMIT 20;
 
 # 3. retrieve the film titles and their rental duration. If any rental duration value is NULL,
 # replace it with the string 'Not Available'. Sort the results of the film title in ascending order.
